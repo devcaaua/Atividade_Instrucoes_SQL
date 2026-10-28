@@ -1,72 +1,97 @@
-/* Instrução 1 */
+# Atividades_DML_LEITURA_SQL
+
+### Instrução 1
+```SQL
 USE vendas_informatica;
 
 SELECT * FROM produto;
+```
 
-/* Instrução 2 */
+### Instrução 2
+```SQL
 USE vendas_informatica;
 
-SELECT nome_produto, marca, estoque FROM produto
+SELECT nome_produto, marca, estoque FROM produto;
+```
 
-/* Instrução 3 */
+### Instrução 3
+```SQL
 USE vendas_informatica;
 
 SELECT nome_produto, categoria, preco_unitario, data_cadastro 
 FROM produto 
 ORDER BY marca ASC;
+```
 
-/* Instrução 4 */
+### Instrução 4
+```SQL
 USE vendas_informatica;
 
 SELECT nome_produto, marca, estoque, data_cadastro 
 FROM produto 
 ORDER BY data_cadastro ASC;
+```
 
-/* Instrução 5 */
+### Instrução 5
+```SQL
 USE vendas_informatica;
 
 SELECT * FROM cliente;
+```
 
-/* Instrução 6 */
+### Instrução 6
+```SQL
 USE vendas_informatica;
 
 SELECT nome_cliente, email, cidade, estado 
 FROM cliente;
+```
 
-/* Instrução 7 */
+### Instrução 7
+```SQL
 USE vendas_informatica;
 
 SELECT nome_cliente, cidade, estado 
 FROM cliente 
 ORDER BY estado ASC;
+```
 
-/* Instrução 8 */
+### Instrução 8
+```SQL
 USE vendas_informatica;
 
 SELECT nome_cliente, email, estado 
 FROM cliente 
 ORDER BY data_cadastro DESC;
+```
 
-/* Instrução 9 */
+### Instrução 9
+```SQL
 USE vendas_informatica;
 
 SELECT * FROM venda;
+```
 
-/* Instrução 10 */
+### Instrução 10
+```SQL
 USE vendas_informatica;
 
 SELECT cliente.nome_cliente, data_venda, preco_unitario_venda, forma_pagamento 
 FROM cliente 
 INNER JOIN venda;
+```
 
-/* Instrução 11 */
+### Instrução 11
+```SQL
 USE vendas_informatica;
 
 SELECT produto.nome_produto, data_venda, quantidade, status_venda 
 FROM produto 
 INNER JOIN venda;
+```
 
-/* Instrução 12 */
+### Instrução 12
+```SQL
 USE vendas_informatica;
 
 SELECT produto.nome_produto, produto.preco_unitario, venda.forma_pagamento 
@@ -75,23 +100,29 @@ INNER JOIN venda
 ON venda.id_produto = produto.id_produto 
 WHERE venda.forma_pagamento 
 IN ('Pix', 'Boleto');
-/* Instrução 13 */
+```
 
+### Instrução 13
+```SQL
 USE vendas_informatica;
 
 SELECT cliente.nome_cliente, produto.nome_produto, venda.data_venda, quantidade 
 FROM cliente 
 INNER JOIN produto 
 INNER JOIN venda;
-/* Instrução 14 */
+```
+### Instrução 14
+```SQL
 USE vendas_informatica;
 
 SELECT produto.nome_produto, venda.desconto_percentual, forma_pagamento 
 FROM produto 
 INNER JOIN venda 
 ORDER BY data_venda ASC;
+```
 
-/* Instrução 15 */
+### Instrução 15
+```SQL
 USE vendas_informatica;
 
 SELECT 
@@ -103,8 +134,10 @@ FROM venda
 INNER JOIN produto ON venda.id_produto = produto.id_produto
 INNER JOIN cliente ON venda.id_cliente = cliente.id_cliente
 ORDER BY venda.status_venda ASC;
+```
 
-/* Instrução 16 */
+### Instrução 16
+```SQL
 USE vendas_informatica;
 
 SELECT 
@@ -120,3 +153,8 @@ JOIN cliente ON venda.id_cliente = cliente.id_cliente
 JOIN produto ON venda.id_produto = produto.id_produto 
 WHERE venda.status_venda IN ("Cancelada", "Concluída") 
 ORDER BY venda.preco_unitario_venda DESC;
+JOIN cliente ON venda.id_cliente = cliente.id_cliente 
+JOIN produto ON venda.id_produto = produto.id_produto 
+WHERE venda.status_venda IN ("Cancelada", "Concluída") 
+ORDER BY venda.preco_unitario_venda DESC;
+```
